@@ -1,0 +1,150 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* General */ 
+
+body { 
+	padding-top: 40px; 
+	font-family: Verdana, Geneva, sans-serif;
+	font-style: normal;
+	font-size: 14px;
+	color: #064441;
+}
+
+h2.post_title {
+
+	a {
+	color: #064441;
+	font-size: 26px;
+	font-style: bold;
+	}
+
+	a:hover {
+			text-decoration: none;
+			color: #333535;
+	}
+}
+
+h2.post_title {
+	color: #064441;
+	font-size: 26px;
+	font-style: bold;
+}
+
+h5.date {
+	font-size: 10px;
+}
+
+
+/* Header */ 
+
+
+nav.main_header {
+	background-color: white ;
+	padding-top: 5px;
+
+}
+
+ul#main_nav { 
+	list-style-type:none;
+	margin: 0;
+    padding: 20px 0 0 30px;
+    overflow: hidden;
+
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto;
+
+	li {
+		float: left;
+		display: inline;
+
+		a {
+			display: block;
+			padding: 8px;
+			background-color: #18998e;
+			color: white;
+		}
+
+		a:hover {
+			color: white;
+			background-color: #064441;
+			text-decoration: none;
+		}
+	}
+}
+
+div#circle_logo {
+	width: 80px;
+	height: 80px;
+	background-image: image-url("logo.jpg");
+	background-size: cover;
+	display: inline-block;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-bottom-right-radius: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+	-moz-border-bottom-right-radius: 50px;
+	float: right;
+}
+
+div#circle_logo:hover {
+	background-image: image-url("logo.jpg");
+	opacity: 0.9;
+	border: 300px;
+	border-color: #064441;
+
+}
+
+
+ul#admin_nav {
+	list-style-type:none;
+}
+
+#admin_tab {
+	width: 90%;
+	text-align: left;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px 0 0 0;
+}
+
+/* Posts */ 
+
+.post_container {
+	width: 90%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 30px;
+
+}
+
+.post_body {
+	padding: 10px 0 10px 0;
+}
+
+div.post_footer {
+	display: block;
+	padding: 5px 0 5px 0;
+	text-align: center;
+}
+
+article.page_main {
+	padding-top: 30px;
+}
+
+.post_body_field {
+	width: 90%;
+	height: 200px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+}
+
+.post_title_field {
+	width: 90%;
+	height: 30px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+}

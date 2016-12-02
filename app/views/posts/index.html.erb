@@ -1,0 +1,18 @@
+<div class="container">
+<section class="post_container">
+	<% @posts.each do |post| %>
+		<article>
+		    <div class="post_header">
+		      <h2 class="post_title"><%= link_to post.title, post %></h2>
+		      <h5 class="date"><%= post.created_at.strftime('%b %d, %Y') %></h5>
+		     </div>
+	  		<div class="post_body">
+	    		<%= raw post.body %>
+	    	</div>
+	    	<div class="post_footer">
+	    		<p>***</p>
+	    	</div>
+	<% end %>
+		</article>
+</section>
+</div>

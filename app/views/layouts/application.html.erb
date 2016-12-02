@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Weblog</title>
+  <title>Giedrius Rimkus - Blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<nav class="main_header navbar-fixed-top">
+		<div class="container">
+			<%= link_to root_path do %>
+			<div id="circle_logo"></div>
+			<% end %>
+			<ul id="main_nav">
+				<li><%= link_to "Home", root_path %></li>
+				<li><%= link_to "About", about_path %></li>
+				<li><%= link_to "Create", new_post_path, class: "admin_button" %></li>
+	</nav>
+	<div class="container">
+		<%= yield %>
+	</div>
+	<footer></footer>
 </body>
 </html>

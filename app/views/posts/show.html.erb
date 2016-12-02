@@ -1,0 +1,16 @@
+<div class="container">
+	<article class="post_container">
+		<div class="post_header">
+			<h2 class="post_title"><%= @post.title %></h2>
+			<h5 class="date"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
+			<%= link_to ' Edit  ', edit_post_path(@post), class: "btn btn-default btn-xs" %>
+			<%= link_to 'Delete', post_path(@post), class: "btn btn-default btn-xs", :method => :delete, data: { confirm: 'Are you sure?' } %>
+		</div>
+		<div class="post_body">
+			<%= raw @post.body %>
+		</div>
+		<div class="post_footer">
+			Previous Post  | <%= link_to "Top of the Page", anchor: "top" %> | Next Post
+		</div>
+	</article>
+</div>
