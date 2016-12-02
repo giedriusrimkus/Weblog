@@ -1,20 +1,17 @@
 class PostsController < ApplicationController
-# Index action to render all posts
 
 def index
-	@posts = Post.order('created_at DESC')
+	@post = Post.all.order('created_at DESC')
 end
 
-# New action for creating post
 def new
 	@post = Post.new
 end
 
-# Create action saves the post into database
 def create
 	@post = Post.new(post_params)
 	if @post.save
-			flash[:notice] = "Successfully created post!"
+			flash[:notice] = "Post created"
 			redirect_to @post
 	else
 		flash[:alert] = "Error creating new post!"
@@ -22,16 +19,14 @@ def create
 	end
 end
 
-# Edit action retrives the post and renders the edit page
 def edit
-	@post = Post.find(params[:id])
+	@post = Post.friendly.find(params[:id])
 end
 
-# Update action updates the post with the new information
 def update
-	@post = Post.find(params[:id])
+	@post = Post.friendly.find(params[:id])
 	if @post.update(post_params)
-		flash[:notice] = "Successfully updated post!"
+		flash[:notice] = "Post updated"
 		redirect_to @post
 	else
 		flash[:alert] = "Error updating post!"
@@ -39,16 +34,14 @@ def update
 	end
 end
 
-# The show action renders the individual post after retrieving the the id
 def show
-	@post = Post.find(params[:id])
+	@post = Post.friendly.find(params[:id])
 end
 
-# The destroy action removes the post permanently from the database
 def destroy
-	@post = Post.find(params[:id])
+	@post = Post.friendly.find(params[:id])
 	@post.destroy
-	flash[:notice] = "Successfully deleted post!"
+	flash[:notice] = "Post deleted"
 	redirect_to posts_path
 end
 
@@ -58,9 +51,4 @@ def post_params
 	params.require(:post).permit(:title, :body)
 end
 
-#
-#def find_post
-#	@post = Post.find(params[:id])
-#end
-#
 end
