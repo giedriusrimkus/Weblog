@@ -18,6 +18,7 @@
 				<li><%= link_to "Create", new_post_path, class: "admin_button" %></li>
 	</nav>
 	<div class="container">
+		<%= render "posts/flash" %>
 		<%= yield %>
 	</div>
 	<footer></footer>

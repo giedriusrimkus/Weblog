@@ -11,10 +11,10 @@ end
 def create
 	@post = Post.new(post_params)
 	if @post.save
-			flash[:notice] = "Post created"
+			flash[:success] = "Post created"
 			redirect_to @post
 	else
-		flash[:alert] = "Error creating new post!"
+		flash[:danger] = "Error creating new post!"
 		render :new
 	end
 end
@@ -26,10 +26,10 @@ end
 def update
 	@post = Post.friendly.find(params[:id])
 	if @post.update(post_params)
-		flash[:notice] = "Post updated"
+		flash[:success] = "Post updated"
 		redirect_to @post
 	else
-		flash[:alert] = "Error updating post!"
+		flash[:danger] = "Error updating post!"
 		render :edit
 	end
 end
@@ -41,7 +41,7 @@ end
 def destroy
 	@post = Post.friendly.find(params[:id])
 	@post.destroy
-	flash[:notice] = "Post deleted"
+	flash[:success] = "Post deleted"
 	redirect_to posts_path
 end
 

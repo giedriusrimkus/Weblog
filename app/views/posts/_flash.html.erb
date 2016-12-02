@@ -1,0 +1,4 @@
+<div class="flash_messages"><% flash.each do |message_type, message| %>
+		<%= content_tag(:div, message, class: "flash_messages alert alert-#{message_type}") %>
+	<% end %>
+</div>
