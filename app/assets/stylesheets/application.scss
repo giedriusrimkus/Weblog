@@ -13,6 +13,10 @@ body {
 
 h2.post_title {
 
+	color: #064441;
+	font-size: 26px;
+	font-style: bold;
+
 	a {
 	color: #064441;
 	font-size: 26px;
@@ -20,16 +24,11 @@ h2.post_title {
 	}
 
 	a:hover {
-			text-decoration: none;
-			color: #333535;
+		text-decoration: none;
+		color: #333535;
 	}
 }
 
-h2.post_title {
-	color: #064441;
-	font-size: 26px;
-	font-style: bold;
-}
 
 h5.date {
 	font-size: 10px;
@@ -135,7 +134,7 @@ ul#admin_nav {
 	padding: 10px 0 10px 0;
 }
 
-div.post_footer {
+div.post_bottom_nav {
 	display: block;
 	padding: 5px 0 5px 0;
 	text-align: center;
@@ -145,7 +144,57 @@ article.page_main {
 	padding-top: 0px;
 }
 
-/* Form */ 
+
+/* Footer */  
+
+footer#main {
+	display: block;
+	padding: 5px 0 5px 0;
+	margin: 10px 0 10px 0;
+	text-align: center;
+	font-size: 10px;
+}
+
+/* Comments */ 
+
+div.comments {
+	margin-right: 2em;
+	margin-left: 2em;
+
+	h3.comment_header { 
+		color: #064441;
+		font-size: 22px;
+		font-style: bold;
+	}
+
+	h5.comment_author {
+		color: #064441;
+		font-size: 16px;
+		text-decoration: underline;
+	}
+
+	h5.comment_date {
+		font-size: 10px;
+
+	}
+
+	div.comment_body {
+		border-bottom: 10px;
+	}
+}
+
+div.comment_form {
+	margin-right: 2em;
+	margin-left: 2em;
+
+	h2 {
+		color: #064441;
+		font-size: 22px;
+		font-style: bold;
+	}
+}
+
+/* Post form */ 
 
 .post_body_field {
 	width: 90%;
@@ -157,6 +206,22 @@ article.page_main {
 .post_title_field {
 	width: 90%;
 	height: 30px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+}
+
+/* Comment form */ 
+
+.comment_body_field {
+	width: 50%;
+	height: 10em;
+	border: 3px solid #cccccc;
+	padding: 5px;
+}
+
+.comment_author_field {
+	width: 50%;
+	height: 2em;
 	border: 3px solid #cccccc;
 	padding: 5px;
 }

@@ -1,0 +1,19 @@
+<article class="comment_container">
+	<h3>Edit comment</h3>
+	<div>
+		<%= form_for([@post, @comment]) do |f| %>
+			<% if @comment.errors.any? %>
+				<div class="alert alert-danger" role="alert">
+					<ul>
+					<% @comment.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+					</ul>
+				</div>
+			<% end %>
+			<p><%= f.text_field :commenter, class: "comment_author_field" %></p>
+			<p><%= f.text_area :body, class: "comment_body_field" %></p>
+			<p><%= f.submit "Update" %></p>
+		<% end %>
+	</div>
+</article>

@@ -9,8 +9,32 @@
 		<div class="post_body">
 			<%= raw @post.body %>
 		</div>
-		<div class="post_footer">
+
+		<section class="comments_container">
+			<div class="comments">
+				<h3 class="comment_header">Comments (<%= @post.comments.count %>)</h3>
+				<% @post.comments.each do |comment| %>
+				<p>
+				<h5 class="comment_author"><%= comment.commenter %></h5>
+				<h5 class="date"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
+				<p class="comment_body"><%= comment.body %></p>
+				<p>
+					<%= link_to ' Edit  ', edit_post_comment_path(@post, comment), class: "btn btn-default btn-xs" %>
+					<%= link_to 'Delete', [comment.post, comment], class: "btn btn-default btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+				</p>
+				<p><hr></p>
+				<% end %>
+			</div>
+			<div class="comment_form">
+				<h2>Write a comment</h2>
+				<p>
+					<%= render 'comments/comment_form' %>
+				</p>
+			</div>
+		</section>
+		<div class="post_bottom_nav">
 			Previous Post  | <%= link_to "Top of the Page", anchor: "top" %> | Next Post
 		</div>
+		<footer id="main">Giedrius Rimkus © 2017</footer>
 	</article>
 </div>
