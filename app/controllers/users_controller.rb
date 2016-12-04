@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :authenticate_user!
+	before_filter :authorize_admin
 
 	def index
 	end
@@ -37,4 +37,6 @@ class UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:email)
 	end
+
+	
 end

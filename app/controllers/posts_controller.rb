@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
-before_action :authenticate_user!, except: [:index, :show]
+# before_action :authenticate_user!, except: [:index, :show]
+before_filter :authorize_admin, except: [:index, :show]
 
 def index
 	@post = Post.all.order('created_at DESC')

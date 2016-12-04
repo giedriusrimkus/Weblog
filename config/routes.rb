@@ -16,9 +16,11 @@ Rails.application.routes.draw do
   match 'users/:id' => 'users#show', :via => :get, :as => :admin_show_user
   match 'users/:id' => 'users#update', :via => :get, :as => :admin_edit_user
 
+  match '/comments',   to: 'comments#index',   via: 'get', :as => :admin_all_comments
+  # match 'comments/:id' => 'comments#delete', :via => :delete, :as => :admin_delete_comment
+
   devise_scope :user do
     get "/admin" => "devise/sessions#new"
-    get "/admin_signup" => "devise/registrations#new"
   end
 
 

@@ -1,13 +1,15 @@
 <div class="container">
-	<h3>All Users</h3>
+	<h3>All Users (<%= User.count %>)</h3>
+	<br>
 	<p><% @users = User.all %>
 		<% @users.each do |user| %>
 		<ol>
 			<li>
-				<%= user.email %><br>
-				<%= user.created_at %><br>
-				<%= link_to "Show User", admin_show_user_path(user) %>
-				<%= link_to "Destroy", admin_destroy_user_path(user), method: :delete, class: "admin_button", data: { confirm: "You sure?" } %>
+				Email: <%= user.email %><br>
+				User created at: <%= user.created_at %><br>
+				Admin<%= user.admin? %><br>
+				<%= link_to "Details", admin_show_user_path(user) %>
+				<%= link_to "Delete", admin_destroy_user_path(user), method: :delete, class: "admin_button", data: { confirm: "You sure?" } %>
 			</li>
 		</ol>
 		<% end %>

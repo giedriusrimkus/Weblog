@@ -53,6 +53,7 @@ ul#main_nav {
 	margin: 0;
     padding: 20px 0 0 30px;
     overflow: hidden;
+    display: inline;
 
     position: fixed; /* Make it stick, even on scroll */
     overflow: auto;
@@ -68,6 +69,20 @@ ul#main_nav {
 			color: white;
 		}
 
+		a.admin_button {
+
+			background-color: #4f7563;
+			color: white;
+
+		}
+
+		a.user_button {
+
+			background-color: #4f7563;
+			color: white;
+
+		}
+
 		a:hover {
 			color: white;
 			background-color: #064441;
@@ -75,6 +90,7 @@ ul#main_nav {
 		}
 	}
 }
+
 
 div#circle_logo {
 	width: 80px;
@@ -131,7 +147,7 @@ ul#admin_nav {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 30px;
+	margin-top: 45px;
 
 }
 
@@ -145,8 +161,9 @@ div.post_bottom_nav {
 	text-align: center;
 }
 
-article.page_main {
+article.about_page {
 	padding-top: 0px;
+	margin-left: 40px;
 }
 
 
