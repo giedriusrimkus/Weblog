@@ -1,0 +1,15 @@
+<div class="container">
+<section>
+  <h3>Admin Show User</h3>
+  <p>Email: <%= @user.email %></p>
+  <p>encrypted_password: <%= @user.encrypted_password %></p>
+  <p>reset_password_token: <%= @user.reset_password_token %></p>
+  <p>reset_password_sent_a: <%= @user.reset_password_sent_at %></p>
+  <p>sign_in_count: <%= @user.sign_in_count %></p>
+  <p>current_sign_in_at: <%= @user.current_sign_in_at %></p>
+  <p>last_sign_in_at: <%= @user.last_sign_in_at %></p>
+  <p>current_sign_in_ip: <%= @user.current_sign_in_ip %></p>
+  <p>user.created_at: <%= @user.created_at %></p>
+  <p>user.updated_at: <%= @user.updated_at %></p>
+  <p><%= link_to "Back to All Users", users_index_path, class: "admin_button" %></p>
+</section>

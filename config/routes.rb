@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
+  devise_for :users
   resources :posts do
     resources :comments
   end
@@ -7,6 +10,16 @@ Rails.application.routes.draw do
   root to: "posts#index"
 
   get '/about', to: 'pages#about'
+
+  match '/users',   to: 'users#index',   via: 'get'
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+  match 'users/:id' => 'users#show', :via => :get, :as => :admin_show_user
+  match 'users/:id' => 'users#update', :via => :get, :as => :admin_edit_user
+
+  devise_scope :user do
+    get "/admin" => "devise/sessions#new"
+    get "/admin_signup" => "devise/registrations#new"
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,15 @@
+<div class="container">
+	<h3>All Users</h3>
+	<p><% @users = User.all %>
+		<% @users.each do |user| %>
+		<ol>
+			<li>
+				<%= user.email %><br>
+				<%= user.created_at %><br>
+				<%= link_to "Show User", admin_show_user_path(user) %>
+				<%= link_to "Destroy", admin_destroy_user_path(user), method: :delete, class: "admin_button", data: { confirm: "You sure?" } %>
+			</li>
+		</ol>
+		<% end %>
+	</p>
+</div>

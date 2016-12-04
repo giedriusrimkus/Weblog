@@ -15,12 +15,20 @@
 			<ul id="main_nav">
 				<li><%= link_to "Home", root_path %></li>
 				<li><%= link_to "About", about_path %></li>
+				<% if user_signed_in?  %>
+				<li><%= link_to "Profile", edit_user_registration_path %></li>
+				<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
 				<li><%= link_to "Create", new_post_path, class: "admin_button" %></li>
+				<li><%= link_to "All Users", users_index_path, class: "admin_button" %></li>
+				<% end %>
 	</nav>
 	<div class="container">
-		<%= render "posts/flash" %>
-		<%= yield %>
-	</div>
+		<section class="main_body">
+			<%= render "posts/flash" %>
+			<%= yield %>
+		
+			</section>
+		</div>
 	<footer></footer>
 </body>
 </html>
