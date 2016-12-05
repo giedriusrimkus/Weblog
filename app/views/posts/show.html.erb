@@ -2,9 +2,14 @@
 	<article class="post_container">
 		<div class="post_header">
 			<h2 class="post_title"><%= @post.title %></h2>
-			<h5 class="date"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
+			<h5 class="date">
+				<%= @post.created_at.strftime('%b %d, %Y') %> | 
+				Comments: <%= @post.comments.count %>
+			</h5>
+			<% if current_user.try(:admin?) %>
 			<%= link_to ' Edit  ', edit_post_path(@post), class: "btn btn-default btn-xs" %>
 			<%= link_to 'Delete', post_path(@post), class: "btn btn-default btn-xs", :method => :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
 		</div>
 		<div class="post_body">
 			<%= raw @post.body %>
@@ -13,15 +18,18 @@
 		<section class="comments_container">
 			<div class="comments">
 				<h3 class="comment_header">Comments (<%= @post.comments.count %>)</h3>
+				<br>
 				<% @post.comments.each do |comment| %>
 				<p>
 				<h5 class="comment_author"><%= comment.commenter %></h5>
-				<h5 class="date"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
+				<h5 class="date"><%= comment.created_at.strftime('%H:%M %b %d, %Y') %></h5>
 				<p class="comment_body"><%= comment.body %></p>
+				<% if current_user.try(:admin?)%>
 				<p>
 					<%= link_to ' Edit  ', edit_post_comment_path(@post, comment), class: "btn btn-default btn-xs" %>
 					<%= link_to 'Delete', [comment.post, comment], class: "btn btn-default btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
 				</p>
+				<% end %>
 				<p><hr></p>
 				<% end %>
 			</div>
@@ -33,7 +41,7 @@
 			</div>
 		</section>
 		<div class="post_bottom_nav">
-			Previous Post  | <%= link_to "Top of the Page", anchor: "top" %> | Next Post
+			<%= link_to "Previous Post", @post.prev %>  | <%= link_to "Top of the Page", anchor: "top" %> | <%= link_to "Next Post", @post.next %>
 		</div>
 		<footer id="main">Giedrius Rimkus © 2017</footer>
 	</article>

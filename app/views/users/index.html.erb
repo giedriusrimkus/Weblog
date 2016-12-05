@@ -1,17 +1,20 @@
 <div class="container">
 	<h3>All Users (<%= User.count %>)</h3>
 	<br>
-	<p><% @users = User.all %>
-		<% @users.each do |user| %>
-		<ol>
-			<li>
-				Email: <%= user.email %><br>
-				User created at: <%= user.created_at %><br>
-				Admin<%= user.admin? %><br>
-				<%= link_to "Details", admin_show_user_path(user) %>
-				<%= link_to "Delete", admin_destroy_user_path(user), method: :delete, class: "admin_button", data: { confirm: "You sure?" } %>
-			</li>
-		</ol>
+	<ol>
+	<% @users = User.all.order('created_at ASC') %>
+	<% @users.each do |user| %>
+	<li>
+		Email: <%= user.email %><br>
+		User created at: <%= user.created_at %><br>
+		<% if user.admin? %>
+		<p><strong><%= "ADMIN USER" %></strong></p>
 		<% end %>
-	</p>
+		<p>
+		<%= link_to "Details", admin_show_user_path(user), class: "btn btn-default btn-xs" %>
+		<%= link_to "Delete", admin_destroy_user_path(user), method: :delete, class: "btn btn-default btn-xs", data: { confirm: "You sure?" } %>
+		</p>
+	</li>
+	<% end %>
+	</ol>
 </div>

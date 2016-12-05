@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	before_filter :authorize_admin
 
 	def index
+		@user = User.all.order('created_at DESC')
 	end
 
 	def show

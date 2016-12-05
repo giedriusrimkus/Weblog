@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 	before_filter :authorize_admin, except: [:show, :new, :create]
 
 	def index
-		@comment = Comment.all
+		@comment = Comment.all.order('created_at DESC')
 	end
 
 	def new
