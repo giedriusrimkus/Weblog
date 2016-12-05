@@ -1,20 +1,19 @@
 <div class="container">
+	<article>
 	<% @post.each do |post| %>
-		<article>
-	<div class="post_header">
-	<h2 class="post_title"><%= link_to post.title, post %></h2>
-	<h5 class="date"><%= post.created_at.strftime('%B %d, %Y') %> | 
-	Comments: <%= post.comments.count %>
-			      	
-	</h5>
-	</div>
-	<div class="post_body">
-	<%= raw post.body %>
-	</div>
-	<div>
-	<p><hr></p>
-	</div>
+		<div class="post_header">
+			<h2 class="post_title"><%= link_to post.title, post %></h2>
+			<h5 class="date"><%= post.created_at.strftime('%B %d, %Y') %> | 
+			Comments: <%= post.comments.count %>      	
+			</h5>
+		</div>
+		<div class="post_body">
+			<%= raw post.body %>
+		</div>
+		<div>
+		<hr>
+		</div>
 	<% end %>
 	</article>
+	<footer id="main">Giedrius Rimkus © 2017</footer>
 </div>
-<footer id="main">Giedrius Rimkus © 2017</footer>
