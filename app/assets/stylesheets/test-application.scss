@@ -59,10 +59,34 @@ div.container {
 
 }
 
-
+.hidden { display: none; }
 
 /* Header */ 
 
+
+div.navbar-header {
+	float: right;
+}
+
+div.nav_header {
+	background-color: white;
+	padding-top: 5px;
+}
+
+ul.main_nav {
+
+}
+
+
+nav.nav_header {
+	background-color: white;
+}
+
+.container-fluid {
+	padding-left: 9em;
+	padding-right: 9em;
+}
+/* 
 
 nav.main_header {
 	background-color: white ;
@@ -70,14 +94,16 @@ nav.main_header {
 
 }
 
-ul#main_nav { 
+/*
+
+ul.main_navaaaaa {
 	list-style-type:none;
 	margin: 0;
     padding: 20px 0 0 30px;
     overflow: hidden;
     display: inline;
 
-    position: fixed; /* Make it stick, even on scroll */
+    position: fixed; /* Make it stick, even on scroll 
     overflow: auto;
 
 	li {
@@ -113,6 +139,24 @@ ul#main_nav {
 	}
 }
 
+.nav_main {
+	padding: 20px 0 0 30px;
+}
+
+
+div.navbar-header {
+	float: right;
+	border-bottom: none;
+	background-color: white;
+}
+
+.main_nav {
+	padding: 10px 20px 0 50px;
+}
+.container-fluid {
+}
+
+*/ 
 
 div#circle_logo {
 	width: 80px;
@@ -137,6 +181,11 @@ div#circle_logo:hover {
 
 }
 
+
+
+
+
+
 div.error_messages {
 
 }
@@ -145,33 +194,10 @@ div.flash_messages {
 	margin-left: 15px;
 	margin-bottom: 0px;
 	display: inline-block;
-	text-align: center;
-}
-
-
-ul#admin_nav {
-	list-style-type:none;
-}
-
-#admin_tab {
-	width: 90%;
-	text-align: left;
-	display: inline-block;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 5px 0 0 0;
-}
-
-
-div.flash_messages {
-	margin-top: 30px;
-	margin-left: 15px;
-	margin-bottom: 0px;
-	display: inline-block;
 }
 
 div.flash_wrapper {
-	text-align: center;
+text-align: center;
 }
 
 
@@ -180,9 +206,9 @@ div.flash_wrapper {
 div#post_content {
 	display: block;
 	float: left;
-	padding: 0 0 3em 0;
-}
-
+	padding: 0 0 0 0;
+} 
+ 
 .post_body {
 	padding: 10px 0 10px 0;
 }
@@ -295,7 +321,6 @@ div.comment_form {
 	padding: 5px;
 }
 
-
 /* Contact form */ 
 
 .contact_message_field {
@@ -320,6 +345,7 @@ div.comment_form {
 	border: 3px solid #cccccc;
 	padding: 5px;
 }
+
 
 
 /*flash*/

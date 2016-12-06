@@ -1,9 +1,9 @@
 <div class="container">
 	<article class="post_container">
 		<div class="post_header">
-			<h2 class="post_title"><%= @post.title.capitalize %></h2>
+			<h2 class="post_title"><%= @post.title.titleize %></h2>
 			<h5 class="date">
-				<%= @post.created_at.strftime('%b %d, %Y') %> | 
+				<%= @post.created_at.strftime('%B %d, %Y') %> | 
 				Comments: <%= @post.comments.count %>
 			</h5>
 			<% if current_user.try(:admin?) %>
@@ -12,7 +12,7 @@
 			<% end %>
 		</div>
 		<div class="post_body">
-			<%= raw @post.body %>
+			<div id="post_content"><%= raw @post.body %></div>
 		</div>
 
 		<section class="comments_container">

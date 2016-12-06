@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root to: "posts#index"
 
   get '/about', to: 'pages#about'
+  get '/manage', to: 'pages#manage'
 
   match '/users',   to: 'users#index',   via: 'get'
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
@@ -19,13 +20,17 @@ Rails.application.routes.draw do
   match '/comments',   to: 'comments#index',   via: 'get', :as => :admin_all_comments
   # match 'comments/:id' => 'comments#delete', :via => :delete, :as => :admin_delete_comment
 
-  resources "contacts", only: [:new, :create]
-  match '/contacts',   to: 'contacts#new',   via: 'get'
-  match '/contact',   to: 'contacts#new',   via: 'get'
+  #resources "contacts", only: [:new, :create]
+  #match '/contacts',   to: 'contacts#new',   via: 'get'
+  #match '/contact',   to: 'contacts#new',   via: 'get'
 
   devise_scope :user do
     get "/admin" => "devise/sessions#new"
   end
+
+  get 'contact', to: 'messages#new', as: 'contact'
+  post 'contact', to: 'messages#create'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

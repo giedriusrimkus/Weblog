@@ -1,0 +1,20 @@
+<% @comment = Comment.all %>
+<% @comment.each do |comment| %>
+<article>
+	<div class="post_header">
+		<h4 class="date"><%= comment.commenter %></h4>
+		<h5 class="date"><%= comment.created_at.strftime('%b %d, %Y') %></h5>
+	</div>
+	<div class="post_body">
+		<%= comment.body %>
+	</div>
+	<p>
+		<%= link_to 'Edit',  admin_all_comments_path, class: "btn btn-default btn-xs" %>
+		<%= link_to 'Delete',  admin_all_comments_path, class: "btn btn-default btn-xs" %>
+	</p>
+	<div>
+		<p><hr></p>
+	</div>
+	<% end %>
+</article>
+</div>

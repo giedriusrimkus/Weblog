@@ -15,16 +15,13 @@
 			<ul id="main_nav">
 				<li><%= link_to "Home", root_path %></li>
 				<li><%= link_to "About", about_path %></li>
-				<li><%= link_to t('Contact'), contact_path %></li>
-				<% if user_signed_in?  %>
-				<li><%= link_to "Profile", edit_user_registration_path, class: "user_button"%></li>
-				<li><%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "user_button" %></li>
-				<% end %>
+				<li><%= link_to "Contact", contact_path %></li>
 				<% if current_user.try(:admin?)%>
 				<li><%= link_to "Create", new_post_path, class: "admin_button" %></li>
-				<li><%= link_to "All Users", users_index_path, class: "admin_button" %></li>
-				<li><%= link_to "All Comments", admin_all_comments_path, class: "admin_button" %>
-				</li>
+				<li><%= link_to "Manage", manage_path, class: "admin_button" %></li>
+				<% end %>
+				<% if user_signed_in?  %>
+				<li><%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "user_button" %></li>
 				<% end %>
 			</ul>
 	</nav>
