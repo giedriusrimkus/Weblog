@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   match '/comments',   to: 'comments#index',   via: 'get', :as => :admin_all_comments
   # match 'comments/:id' => 'comments#delete', :via => :delete, :as => :admin_delete_comment
 
+  resources "contacts", only: [:new, :create]
+  match '/contacts',   to: 'contacts#new',   via: 'get'
+  match '/contact',   to: 'contacts#new',   via: 'get'
+
   devise_scope :user do
     get "/admin" => "devise/sessions#new"
   end

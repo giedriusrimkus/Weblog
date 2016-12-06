@@ -1,7 +1,7 @@
 <div class="container">
 	<article class="post_container">
 		<div class="post_header">
-			<h2 class="post_title"><%= @post.title %></h2>
+			<h2 class="post_title"><%= @post.title.capitalize %></h2>
 			<h5 class="date">
 				<%= @post.created_at.strftime('%b %d, %Y') %> | 
 				Comments: <%= @post.comments.count %>

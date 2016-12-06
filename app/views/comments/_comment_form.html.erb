@@ -1,11 +1,11 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
 	<p>
-		<%= f.text_field :commenter, class: "comment_author_field", placeholder: "Name" %>
+		<%= f.text_field :commenter, class: "comment_author_field", placeholder: "Your name" %>
 	</p>
 	<p>
-	    <%= f.text_area :body, class: "comment_body_field", placeholder: "Comment" %>
+	    <%= f.text_area :body, class: "comment_body_field", placeholder: "Enter your comment here..." %>
 	</p>
 	<p>
-		<%= f.submit "Save", class: "btn btn-default" %>
+		<%= f.submit "Post Comment", class: "btn btn-default" %>
 	</p>
 <% end %>
