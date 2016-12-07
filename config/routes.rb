@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   
   root to: "posts#index"
+  match 'posts/:id/publish' => 'posts#publish', :via => :get, :as => :publish_post
+  match 'posts/:id/unpublish' => 'posts#unpublish', :via => :get, :as => :unpublish_post
 
   get '/about', to: 'pages#about'
   get '/manage', to: 'pages#manage'

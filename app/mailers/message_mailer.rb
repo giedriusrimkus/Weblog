@@ -1,5 +1,5 @@
 class MessageMailer < ApplicationMailer
-	default from: "Giedrius BLOG <no-reply@giedrius-blog.com>"
+	default from: "BLOG <no-reply@giedrius-blog.com>"
 	default to: "Giedrius Rimkus <giedrius.rimkus.a@gmail.com>"
 
 	def new_message(message)

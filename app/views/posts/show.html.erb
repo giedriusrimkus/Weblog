@@ -1,20 +1,32 @@
 <div class="container">
+<% if @post.published.to_s == "true" || current_user.try(:admin?) %>
 	<article class="post_container">
-		<div class="post_header">
+		<header class="post_header">
 			<h2 class="post_title"><%= @post.title.titleize %></h2>
-			<h5 class="date">
-				<%= @post.created_at.strftime('%B %d, %Y') %> | 
-				Comments: <%= @post.comments.count %>
-			</h5>
-			<% if current_user.try(:admin?) %>
-			<%= link_to ' Edit  ', edit_post_path(@post), class: "btn btn-default btn-xs" %>
-			<%= link_to 'Delete', post_path(@post), class: "btn btn-default btn-xs", :method => :delete, data: { confirm: 'Are you sure?' } %>
+			<% if @post.published.to_s == "false" %>
+			<h5 class="post_status">(Unpublished)</h5>
 			<% end %>
-		</div>
+			<h5 class="date">
+				<%= @post.created_at.strftime('%B %d, %Y') %> | Comments: <%= @post.comments.count %>
+			</h5>
+			<p>
+				<% if current_user.try(:admin?) %>
+				<%= link_to ' Edit  ', edit_post_path(@post), class: "btn btn-default btn-xs" %>
+				<% if @post.published.to_s == "false" %>
+					<%= link_to ' Publish  ', publish_post_path(@post), class: "btn btn-default btn-xs" %>
+				<% else %>
+					<%= link_to ' Unpublish  ', unpublish_post_path(@post), class: "btn btn-default btn-xs" %>
+				<% end %>
+				<%= link_to 'Delete', post_path(@post), class: "btn btn-default btn-xs", :method => :delete, data: { confirm: 'Are you sure?' } %>
+				<% end %>
+			</p>
+		</header>
 		<div class="post_body">
-			<div id="post_content"><%= raw @post.body %></div>
+			<%= raw @post.body %>
 		</div>
-
+		<footer class="post_footer">
+			<hr>
+		</footer>
 		<section class="comments_container">
 			<div class="comments">
 				<h3 class="comment_header">Comments (<%= @post.comments.count %>)</h3>
@@ -44,4 +56,5 @@
 			<%= link_to "Previous Post", @post.prev %>  | <%= link_to "Top of the Page", anchor: "top" %> | <%= link_to "Next Post", @post.next %>
 		</div>
 	</article>
+<% end %>
 </div>

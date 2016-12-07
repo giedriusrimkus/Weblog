@@ -48,10 +48,35 @@ def destroy
 	redirect_to posts_path
 end
 
+def publish
+	@post = Post.friendly.find(params[:id])
+	@post.published = true
+	if @post.save
+		redirect_to @post
+		flash[:success] = "Post published"
+	else
+		flash[:alert] = "Error occured"
+		redirect_to @post
+	end
+end
+
+def unpublish
+	@post = Post.friendly.find(params[:id])
+	@post.published = false
+	@post.save
+	if @post.save
+		redirect_to @post
+		flash[:success] = "Post unpublished"
+	else
+		flash[:alert] = "Error occured"
+		redirect_to @post
+	end
+end
+
 private
 
 def post_params
-	params.require(:post).permit(:title, :body)
+	params.require(:post).permit(:title, :body, :published)
 end
 
 end
