@@ -1,5 +1,5 @@
 class PostAttachmentsController < ApplicationController
-	before_action :set_post_attachment, only: [:show, :edit, :update, :destroy]
+	# before_action :set_post_attachment, only: [:show, :edit, :update, :destroy]
 
 	def index
 	    @post_attachments = PostAttachment.all
