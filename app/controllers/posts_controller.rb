@@ -63,7 +63,6 @@ end
 def unpublish
 	@post = Post.friendly.find(params[:id])
 	@post.published = false
-	@post.save
 	if @post.save
 		redirect_to @post
 		flash[:success] = "Post unpublished"
