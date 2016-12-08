@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+  
   get 'users/index'
 
   devise_for :users
   resources :posts do
     resources :comments
   end
-  
+
+  # resources :post_attachments
+
   root to: "posts#index"
   match 'posts/:id/publish' => 'posts#publish', :via => :get, :as => :publish_post
   match 'posts/:id/unpublish' => 'posts#unpublish', :via => :get, :as => :unpublish_post

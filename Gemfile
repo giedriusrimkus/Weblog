@@ -39,11 +39,16 @@ gem 'bootstrap-sass', '~> 3.3'
 
 gem 'friendly_id', '~> 5.1.0'
 
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem 'mini_magick'
+
 gem 'devise'
 
 gem 'mail_form'
 
 gem 'simple_form'
+
+gem 'ckeditor'
 
 
 group :development, :test do
