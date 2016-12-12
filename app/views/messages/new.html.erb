@@ -1,20 +1,31 @@
-<div class="container">
-  <h1>Contact Me</h1>
-  <p>Please fill in the contact form below. </p>
-  <%= form_for @message, url: contact_path do |f| %>
-  <% if @message.errors.any? %>
-  <div class="alert alert-danger">
-      <ul>
-      <% @message.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<h2 class="post_title">Contact Me</h2>
+<p>Please fill in the contact form below. I'll get back you you as soon as possible.</p>
+      <%= form_for @message, url: contact_path do |f| %>
+      <% if @message.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+          <% @message.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+      <div class="row">
+        <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
+          <div class="form-group">
+            <p><%= f.text_field :name, :required => true, class: "form-control", placeholder: "Name *" %></p>
+            <p><%= f.email_field :email, :required => true, class: "form-control", placeholder: "E-mail *" %></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6">
+          <div class="form-group">
+            <%= f.text_area :content, :required => false, class: "form-control", rows: "10", placeholder: "Message"  %>
+          </div>
+        </div>
+      </div>
+      <%= f.submit 'Send message', :class=> "btn btn-default" %>
+    <% end %>
   </div>
-
-  <% end %>
-    <p><%= f.text_field :name, :required => true, class: "contact_text_field", placeholder: "Name *" %></p>
-    <p><%= f.email_field :email, :required => true, class: "contact_email_field", placeholder: "E-mail *" %></p>
-    <p><%= f.text_area :content, :required => false, class: "contact_message_field",placeholder: "Enter your message here..."  %></p>
-    <p><%= f.submit 'Send message', :class=> "btn btn-default" %></p>
-  <% end %>
 </div>

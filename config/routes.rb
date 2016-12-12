@@ -16,15 +16,14 @@ Rails.application.routes.draw do
   match 'posts/:id/unpublish' => 'posts#unpublish', :via => :get, :as => :unpublish_post
 
   get '/about', to: 'pages#about'
-  get '/manage', to: 'pages#manage'
 
   match '/users',   to: 'users#index',   via: 'get'
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   match 'users/:id' => 'users#show', :via => :get, :as => :admin_show_user
   match 'users/:id' => 'users#update', :via => :get, :as => :admin_edit_user
 
-  match '/comments',   to: 'comments#index',   via: 'get', :as => :admin_all_comments
-  # match 'comments/:id' => 'comments#delete', :via => :delete, :as => :admin_delete_comment
+  match '/comments',   to: 'comments#index',   via: 'get', :as => :all_comments
+  match '/comments/:id',   to: 'comments#show',   via: 'get', :as => :show_comment
 
   #resources "contacts", only: [:new, :create]
   #match '/contacts',   to: 'contacts#new',   via: 'get'
@@ -35,7 +34,6 @@ Rails.application.routes.draw do
   end
 
   get 'contact', to: 'messages#new', as: 'contact'
-  post 'contact', to: 'messages#create'
 
 
 

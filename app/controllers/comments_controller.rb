@@ -9,6 +9,10 @@ class CommentsController < ApplicationController
 		@comment = Comment.new
 	end
 
+	def show
+		@comment = Comment.find(params[:id])
+	end
+
 	def create
 		@post = Post.friendly.find(params[:post_id])
 		@comment = @post.comments.create(comment_params)
@@ -28,13 +32,6 @@ class CommentsController < ApplicationController
 		flash[:success] = "Comment deleted"
 		redirect_to post_path(@post)
 	end
-
-	#def delete
-	#	@comment = Comment.find(params[:id]
-	#	@comment.destroy
-	#	flash[:success] = "Comment deleted"
-	#	redirect_to admin_all_comments_path
-	# end
 
 	def edit
 		@post = Post.friendly.find(params[:post_id])

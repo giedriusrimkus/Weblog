@@ -1,24 +1,30 @@
-<%= form_for @post do |f| %>
-  <% if @post.errors.any? %>
-    <div class="alert alert-danger">
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li>
-          <%= msg %>
-        </li>
-      <% end %>
-      </ul>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="form-group">
+      <%= form_for @post do |f| %>
+        <% if @post.errors.any? %>
+          <div class="alert alert-danger">
+            <ul>
+            <% @post.errors.full_messages.each do |msg| %>
+              <li>
+                <%= msg %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+          <div>
+          <p>
+            <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+          </p>
+          <p>
+              <%= raw f.cktext_area :body, class: "form-control", rows: "15", placeholder: "Body" %>
+          </p>
+          <p>
+            <%= f.submit "Save", class: "btn btn-default" %>
+          </p>
+        </div>
+    <% end %>
     </div>
-  <% end %>
-    <div>
-    <p>
-      <%= f.text_field :title, class: "post_title_field", placeholder: "Title" %>
-    </p>
-    <p>
-        <%= raw f.cktext_area :body, class: "post_body_field", placeholder: "Body" %>
-    </p>
-    <p>
-      <%= f.submit "Save", class: "btn btn-default" %>
-    </p>
   </div>
-<% end %>
+</div>

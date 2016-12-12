@@ -1,61 +1,59 @@
-<div class="container">
 <% if @post.published.to_s == "true" || current_user.try(:admin?) %>
-	<article class="post_container">
-		<header class="post_header">
-			<p id="notice"><%= notice %></p>
-			<h2 class="post_title"><%= @post.title.titleize %></h2>
+	<header class="post_header">
+		<h2 class="post_title"><%= @post.title %></h2>
+		<% if @post.published.to_s == "false" %>
+		<h5 class="post_status">(Unpublished)</h5>
+		<% end %>
+		<h5 class="date">
+			<%= @post.created_at.strftime('%B %d, %Y') %> | Comments: <%= @post.comments.count %>
+		</h5>
+		<p>
+		<% if current_user.try(:admin?) %>
+			<%= link_to ' Edit  ', edit_post_path(@post), class: "btn btn-default btn-xs" %>
 			<% if @post.published.to_s == "false" %>
-			<h5 class="post_status">(Unpublished)</h5>
+				<%= link_to ' Publish  ', publish_post_path(@post), class: "btn btn-default btn-xs" %>
+			<% else %>
+				<%= link_to ' Unpublish  ', unpublish_post_path(@post), class: "btn btn-default btn-xs" %>
 			<% end %>
-			<h5 class="date">
-				<%= @post.created_at.strftime('%B %d, %Y') %> | Comments: <%= @post.comments.count %>
-			</h5>
-			<p>
-				<% if current_user.try(:admin?) %>
-				<%= link_to ' Edit  ', edit_post_path(@post), class: "btn btn-default btn-xs" %>
-				<% if @post.published.to_s == "false" %>
-					<%= link_to ' Publish  ', publish_post_path(@post), class: "btn btn-default btn-xs" %>
-				<% else %>
-					<%= link_to ' Unpublish  ', unpublish_post_path(@post), class: "btn btn-default btn-xs" %>
-				<% end %>
-				<%= link_to 'Delete', post_path(@post), class: "btn btn-default btn-xs", :method => :delete, data: { confirm: 'Are you sure?' } %>
-				<% end %>
-			</p>
-		</header>
-		<div class="post_body">
-			<%= raw @post.body %>
-		</div>
-		<footer class="post_footer">
-			<hr>
-		</footer>
-		<section class="comments_container">
-			<div class="comments">
-				<h3 class="comment_header">Comments (<%= @post.comments.count %>)</h3>
-				<br>
-				<% @post.comments.each do |comment| %>
-				<p>
-				<h5 class="comment_author"><%= comment.commenter %></h5>
-				<h5 class="date"><%= comment.created_at.strftime('%H:%M %b %d, %Y') %></h5>
-				<p class="comment_body"><%= comment.body %></p>
-				<% if current_user.try(:admin?)%>
-				<p>
-					<%= link_to ' Edit  ', edit_post_comment_path(@post, comment), class: "btn btn-default btn-xs" %>
-					<%= link_to 'Delete', [comment.post, comment], class: "btn btn-default btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
-				</p>
-				<% end %>
-				<p><hr></p>
-				<% end %>
-			</div>
-			<div class="comment_form">
-				<h2>Write a comment</h2>
-				<p>
-					<%= render 'comments/comment_form' %>
-				</p>
-			</div>
-		</section>
-		<div class="post_bottom_nav">
-			<%= link_to "Previous Post", @post.prev %>  | <%= link_to "Top of the Page", anchor: "top" %> | <%= link_to "Next Post", @post.next %>
-		</div>
+			<%= link_to 'Delete', post_path(@post), class: "btn btn-default btn-xs", :method => :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
+		</p>
+	</header>
+	<article class="post_body">
+		<%= raw @post.body %>
 	</article>
+	<footer class="post_footer">
+		<hr>
+	</footer>
+	<div class="row">
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-centered">
+        	<% if @post.comments.count > 0 %>
+			<h2 class="comment_section">Comments (<%= @post.comments.count %>)</h2>
+			<% end %>
+			<% @post.comments.each do |comment| %>
+			<h5 class="comment_author"><%= comment.commenter %></h5>
+			<h5 class="comment_date"><%= comment.created_at.strftime('%H:%M %b %d, %Y') %></h5>
+			<p class="comment_body"><%= comment.body %></p>
+			<% if current_user.try(:admin?) %>
+			<p>
+				<%= link_to ' Edit  ', edit_post_comment_path(@post, comment), class: "btn btn-default btn-xs" %>
+				<%= link_to 'Delete', [comment.post, comment], class: "btn btn-default btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+			</p>
+			<% end %>
+			<p><hr></p>
+			<% end %>
+			<h2 class="comment_section">Write a comment</h2>
+			<%= render 'comments/comment_form' %>
+		</div>					
+	</div>
+	<div class="row">
+		<div class="post_bottom_nav hidden-xs col-sm-11 col-md-11 col-lg-11 col-centered">
+				<%= link_to "<< Previous Post", @post.prev %>  | 
+				<%= link_to "Top of the Page", anchor: "top" %> | 
+				<%= link_to "Next Post >>", @post.next %>
+		</div>
+		<div class="post_bottom_nav visible-xs-11 hidden-sm hidden-md hidden-lg">
+			<%= link_to "<< Previous", @post.prev %>  | <%= link_to "Top", anchor: "top" %> | <%= link_to "Next >>", @post.next %>
+		</div>
+	</div>
 <% end %>
-</div>

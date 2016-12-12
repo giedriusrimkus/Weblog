@@ -1,23 +1,22 @@
-<div class="container">
-<h3>All Comments (<%= Comment.count %>)</h3>
-<br>
-	<% @comment.each do |comment| %>
-		<article>
-		    <div class="post_header">
-		    	<h4 class="date"><%= comment.commenter %></h4>
-		      <h5 class="date"><%= comment.created_at.strftime('%b %d, %Y') %></h5>
-
-		     </div>
-	  		<div class="post_body">
-	    		<%= comment.body %>
-	    	</div>
-	    	<p>
-				<%= link_to 'Edit',  admin_all_comments_path, class: "btn btn-default btn-xs" %>
-				<%= link_to 'Delete',  admin_all_comments_path, class: "btn btn-default btn-xs" %>
-				</p>
-	    	<div>
-	    		<p><hr></p>
-	    	</div>
-	<% end %>
-		</article>
+<div class="row">
+	<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-centered">
+		<h2 class="comment_section">All comments (<%= Comment.count %>)</h2>
+		<% @posts = Post.all %>
+		<% @posts.each do |post| %>
+			<% post.comments.each  do |comment| %>
+			<h5 class="comment_author">"<%= post.title %>"</h5>
+			<h5 class="comment_author"><%= comment.commenter %></h5>
+			<h5 class="comment_date">Comment ID: <%= comment.id %></h5>
+			<h5 class="comment_date">Comment created at: <%= comment.created_at.strftime('%b %d, %Y') %></h5>
+			<p class="comment_body"><%= comment.body %></p>
+		<p>
+			<%= link_to 'Edit',  edit_post_comment_path(post, comment), class: "btn btn-default btn-xs" %>
+			<%= link_to 'Delete', [comment.post, comment], class: "btn btn-default btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+		</p>
+		<div>
+			<p><hr></p>
+		</div>
+			<% end %>
+		<% end %>
+	</div>
 </div>
