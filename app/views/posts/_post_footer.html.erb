@@ -1,0 +1,17 @@
+<% if @posts.any? %>
+
+	<footer class="post_footer">
+		<p class="social_share"><%= social_share_button_tag(post.title) %></p>
+		<p class="tags"><%= raw tag_links(post.all_tags) %></p>
+		<p><hr></p>
+	</footer>
+
+<% else %>
+
+	<footer class="post_footer">
+		<p class="social_share"><%= social_share_button_tag(@post.title) %></p>
+		<p class="tags"><%= raw tag_links(@post.all_tags) %></p>
+		<p><hr></p>
+	</footer>
+
+<% end %>

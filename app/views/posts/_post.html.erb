@@ -1,0 +1,25 @@
+<section>
+	<% @posts.each do |post| %>
+	<% if post.published.to_s == "true" || current_user.try(:admin?) %>
+		<header class="post_header">
+			<h2 class="post_title"><%= link_to post.title, post %></h2>
+		<% if post.published.to_s == "false" %>
+			<h5 class="post_status">(Unpublished)</h5>
+		<% end %>
+			<h5 class="date"><%= post.created_at.strftime('%B %d, %Y') %>
+			<% if post.comments.any? %>
+			| Comments: <%= post.comments.count %> 
+			<% end %>    	
+			</h5>
+		</header>
+		<article class="post_body">
+			<%= raw post.body %>
+		</article> 
+		<footer class="post_footer">
+			<p class="tags"><%= raw tag_links(post.all_tags) %></p>
+			<p class="social_share"><%= social_share_button_tag(post.title) %></p>
+			<p><hr></p>
+		</footer>
+	<% end %>	
+	<% end %>
+</section>

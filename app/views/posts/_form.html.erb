@@ -1,7 +1,7 @@
+<%= form_for @post do |f| %>
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="form-group">
-      <%= form_for @post do |f| %>
         <% if @post.errors.any? %>
           <div class="alert alert-danger">
             <ul>
@@ -15,16 +15,19 @@
         <% end %>
           <div>
           <p>
-            <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+            <%= f.text_field :title, class: "form-control", placeholder: "Title of the Post" %>
           </p>
           <p>
               <%= raw f.cktext_area :body, class: "form-control", rows: "15", placeholder: "Body" %>
+          </p>
+           <p>
+              <%= f.text_field :all_tags, class: "form-control", placeholder: "Tags (separated by comma)" %>
           </p>
           <p>
             <%= f.submit "Save", class: "btn btn-default" %>
           </p>
         </div>
-    <% end %>
     </div>
   </div>
 </div>
+<% end %>

@@ -63,6 +63,11 @@
 									Comments (<%= Comment.count %>)
 								<% end %>
 								</li>
+								<li>
+								<%= link_to tags_path do %>
+									Tags (<%= Tag.count %>)
+								<% end %>
+								</li>
 							</ul>
 						</li>
 					<% end %>

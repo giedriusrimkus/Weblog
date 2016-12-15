@@ -2,9 +2,12 @@ Rails.application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
   
-  get 'users/index'
+  # get 'users/index'
+  get 'contact', to: 'messages#new', as: 'contact'
+  get '/about', to: 'pages#about'
 
   devise_for :users
+
   resources :posts do
     resources :comments
   end
@@ -15,7 +18,11 @@ Rails.application.routes.draw do
   match 'posts/:id/publish' => 'posts#publish', :via => :get, :as => :publish_post
   match 'posts/:id/unpublish' => 'posts#unpublish', :via => :get, :as => :unpublish_post
 
-  get '/about', to: 'pages#about'
+  get 'tags/:tag', to: 'posts#index', as: "tag"
+  get 'tags/', to: 'tags#index', as: "tags"
+  get 'taggings/', to: 'taggings#index', as: "taggings"
+  match 'taggings/:id' => 'taggings#destroy', :via => :delete, :as => :delete_tagging
+  match 'tags/:id' => 'tags#destroy', :via => :delete, :as => :delete_tag
 
   match '/users',   to: 'users#index',   via: 'get'
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
@@ -32,8 +39,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "/admin" => "devise/sessions#new"
   end
-
-  get 'contact', to: 'messages#new', as: 'contact'
 
 
 

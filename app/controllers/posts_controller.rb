@@ -4,7 +4,11 @@ class PostsController < ApplicationController
 before_filter :authorize_admin, except: [:index, :show]
 
 def index
-	@post = Post.all.order('created_at DESC')
+	if params[:tag]
+		@posts = Post.tagged_with(params[:tag])
+	else
+		@posts = Post.all.order('created_at DESC')
+	end
 end
 
 def new
@@ -75,7 +79,7 @@ end
 private
 
 def post_params
-	params.require(:post).permit(:title, :body, :published)
+	params.require(:post).permit(:title, :body, :all_tags, :published)
 end
 
 end

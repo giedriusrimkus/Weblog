@@ -1,7 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "social-share-button";
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Nunito+Sans|Roboto');
+
 /* General */ 
+
 
 html {
   height: 100%;
@@ -19,9 +24,8 @@ body {
 	margin: 0;
 	padding-bottom: 6rem;
 	min-height: 100%;
-
+	font-family: 'Roboto','Nunito Sans', 'Lato', sans-serif;
 	/* padding-top: 2.500em; */
-	font-family: Lucida Grande, Lucida Sans Unicode,Lucida Sans,Geneva,Arial,sans-serif;
 	font-style: normal;
 	color: black;
 }
@@ -79,17 +83,17 @@ button.navbar-toggle {
 
 h2.post_title {
 
+	font-family: 'Roboto', sans-serif;
 	color: black;
 	font-size: 36px;
-	letter-spacing: -.028em;
+	letter-spacing: 0.5px;
 	font-weight: 900;
 
 
 	a {
 	color: #064441;
-	font-style: bold;
-	letter-spacing: -.028em;
-	font-weight: 700;
+	letter-spacing: 0.5px;
+	font-weight: 900;
 	}
 
 	a:hover {
@@ -98,16 +102,19 @@ h2.post_title {
 	}
 }
 
-
+h5.date {
+	font-size: 12px;
+}
 
 article.post_body {
 	display: block;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 1.58;
-	letter-spacing: -.003em;
+	letter-spacing: 0.5px;
 	float: left;
+	color: rgba(0,0,0,.8);
 }
 
 
@@ -116,20 +123,11 @@ header.post_header {
 	letter-spacing: 0;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 14px;
+	font-size: 16px;
 	color: rgba(0,0,0,.44);
 	fill: rgba(0,0,0,.44);
 }
 
-footer.post_footer {
-	width: 100%;
-	padding-bottom: 1em;
-	float: left;
-
-	hr {
-
-	}
-}
 
 div.post_bottom_nav {
 	padding: 5px 0 5px 0;
@@ -152,6 +150,69 @@ div.thumbnail {
 	display: block;
 
 }
+
+/* Post Footer  */ 
+
+/* Socail Share Buttons */
+
+$size: 14px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}
+
+/*div.social-share-button {
+	text-align: center;
+}*/
+
+
+footer.post_footer {
+	clear: both;
+
+	p.social_share {
+		text-align: center;
+	}
+}
+
+.tags {
+
+	a {
+		font-size: 13px;
+		letter-spacing: 0;
+		text-decoration: none;
+		font-weight: 400;
+		font-style: normal;
+
+		border: none;
+		color: rgba(0,0,0,.6);
+		background: rgba(0,0,0,.05);
+		margin-right: 6px;
+		margin-bottom: 6px;
+		display: inline-block;
+		position: relative;  /* not sure  */ 
+
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 3px;
+		border-bottom-left-radius: 3px;
+
+
+		padding-top: 5px;
+		padding-right: 10px;
+		padding-bottom: 5px;
+		padding-left: 10px;
+	}
+
+	a:hover {
+		background: rgba(0, 0, 0, 0.09);
+
+	}
+}
+
 
 /* Footer */  
 
@@ -184,14 +245,20 @@ h5.comment_date {
 	letter-spacing: 0;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 14px;
+	font-size: 12px;
 	color: rgba(0,0,0,.44);
 	fill: rgba(0,0,0,.44);
 
 }
 
 p.comment_body {
-	font-size: 18px;
+	font-size: 16px;
+	display: block;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.58;
+	letter-spacing: 0.5px;
+	color: rgba(0,0,0,.8);
 }
 
 
@@ -224,3 +291,11 @@ p.comment_body {
     color: #468847;
     text-align: center;
  }
+
+/* Tags   */
+
+
+.css1 { font-size: 1.0em;}
+.css2 { font-size: 1.2em;}
+.css3 { font-size: 1.4em;}
+.css4 { font-size: 1.6em;}

@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-centered">
+		<h2 class="comment_section">All Tags (<%= Tag.count %>)</h2>
+		<% @tags.each do |tag| %>
+			<p class="tags"><%= link_to tag.name, tag_path(tag.name) %></p>
+			<p>Tag ID: <%= tag.id%></p>
+			<p>Tag created_at: <%= tag.created_at %></p>
+			<p>
+			<%= link_to 'Delete', delete_tag_path(tag), class: "btn btn-default btn-xs", :method => :delete, data: { confirm: 'Are you sure?' } %>
+			</p>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-centered">
+		<h2 class="comment_section">All Taggings (<%= Tagging.count %>)</h2>
+		<% @taggings = Tagging.all.order('created_at DESC') %>
+		<% @taggings.each do |tagging| %>
+		<% @post = Post.find(tagging.post_id) %>
+		<% @tag = Tag.find(tagging.tag_id) %>
+		<ul>
+			<li><p>Tagging ID: <%= tagging.id%></p>
+				<p>Post: "<%= @post.title %>" (<%= tagging.post_id %>)</p>
+				<p class="tags">Tag: <%= @tag.name %> (<%= tagging.tag_id%>)</p>
+				<p>
+				<%= link_to 'Delete', delete_tagging_path(tagging), class: "btn btn-default btn-xs", :method => :delete, data: { confirm: 'Are you sure?' } %>
+				</p>
+			</li>
+		</ul>
+		<% end %>
+	</div>
+</div>

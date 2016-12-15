@@ -5,7 +5,10 @@
 		<h5 class="post_status">(Unpublished)</h5>
 		<% end %>
 		<h5 class="date">
-			<%= @post.created_at.strftime('%B %d, %Y') %> | Comments: <%= @post.comments.count %>
+			<%= @post.created_at.strftime('%B %d, %Y') %>
+			<% if @post.comments.any? %>
+			 | Comments: <%= @post.comments.count %>
+			<% end %>
 		</h5>
 		<p>
 		<% if current_user.try(:admin?) %>
@@ -23,7 +26,9 @@
 		<%= raw @post.body %>
 	</article>
 	<footer class="post_footer">
-		<hr>
+		<p class="tags"><%= raw tag_links(@post.all_tags) %></p>
+		<p class="social_share"><%= social_share_button_tag(@post.title) %></p>
+		<p><hr></p>
 	</footer>
 	<div class="row">
         <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-centered">
