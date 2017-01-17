@@ -1,3 +1,5 @@
 == README
 
-Personal Blog with Ruby on Rails
+Personal Blog built with Ruby on Rails web framework.
+
+www.giedriusrimkus.lt
