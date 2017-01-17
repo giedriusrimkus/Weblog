@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   # get 'users/index'
-  get 'contact', to: 'messages#new', as: 'contact'
+  get '/contact', to: 'messages#new', as: 'contact'
+  post '/contact', to: 'messages#create'
+
   get '/about', to: 'pages#about'
 
   devise_for :users
