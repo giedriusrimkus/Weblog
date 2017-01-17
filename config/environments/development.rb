@@ -45,11 +45,11 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
+  address: "",
   port: 587,
-  domain: "gmail.com",
-  user_name: "***",
-  password: "***",
+  domain: "",
+  user_name: "",
+  password: "",
   authentication: :login,
   enable_starttls_auto: true
   }

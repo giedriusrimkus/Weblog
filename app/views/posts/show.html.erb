@@ -1,3 +1,4 @@
+<% provide(:title, @post.title + " | " ) %>
 <% if @post.published.to_s == "true" || current_user.try(:admin?) %>
 	<header class="post_header">
 		<h2 class="post_title"><%= @post.title %></h2>
